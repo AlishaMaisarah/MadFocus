@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>💖Select Timer⏳</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Cookie&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Press Start 2P', monospace;
+      background: #ffffff;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Main Container */
+    .container {
+  width: 90%;
+  max-width: 600px;
+  border: 4px solid #db9aea;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(213,141,216,0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* Optional: match index.html height behavior */
+  min-height: auto; /* remove extra min-height if set */
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 30px;
+      background: #fff;
+      border-bottom: 4px solid #db9aea;
+      position: relative;
+    }
+
+    .top-bar h1 {
+      color: #c979ec;
+      margin: 0;
+      font-size: 20px;
+    }
+
+    /* Content Area */
+    .content {
+  padding: 30px 30px 30px;
+  background: linear-gradient(to bottom, #fff, #fdf2ff);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* optional, if you want same vertical alignment */
+}
+
+    /* Time Buttons */
+    .time-btn {
+      font-family: 'Press Start 2P', monospace;
+      background: #FFFFD6;
+      color: #c979ec;
+      border: 2px solid #db9aea;
+      border-radius: 45px;
+      padding: 15px 5px; /* Adjusted padding for equal width */
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(213, 141, 216, 0.4);
+      transition: all 0.3s ease;
+      margin: 10px 0px 21px;
+      width: 180px; /* Fixed width for all buttons */
+      min-height: 60px; /* Fixed height for all buttons */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .time-btn:hover {
+      background: #db9aea;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* Button Container */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* Title Emojis */
+    .title-emojis {
+      display: block;
+      margin: 10px 0 20px;
+      font-size: 24px;
+      letter-spacing: 5px;
+      animation: pulse 1.5s ease infinite;
+    }
+
+    /* Floating Emojis */
+    .floating-emoji {
+      position: absolute;
+      font-size: 20px;
+      animation: float 3s ease-in-out infinite;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <h1>CHOOSE FOCUS TIME</h1>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <div class="title-emojis">🍰🍰🍰</div>
+      
+      <div class="button-grid">
+        <button class="time-btn" onclick="setTimer(1)">1 MINUTE</button>
+        <button class="time-btn" onclick="setTimer(60)">1 HOUR</button>
+        <button class="time-btn" onclick="setTimer(120)">2 HOURS</button>
+        <button class="time-btn" onclick="setTimer(180)">3 HOURS</button>
+        <button class="time-btn" onclick="setTimer(240)">4 HOURS</button>
+        <button class="time-btn" onclick="setTimer(300)">5 HOURS</button>
+      </div>
+    </div>
+
+    <!-- Floating Emojis -->
+    <div class="floating-emoji" style="top: 10%; left: 8%;">🐇</div>
+    <div class="floating-emoji" style="top: 5%; right: 5%; animation-delay: 0.5s;">🫖</div>
+    <div class="floating-emoji" style="top: 30%; left: 5%;">📖</div>
+    <div class="floating-emoji" style="bottom: 55%; right: 5%; animation-delay: 1s;">❤️</div>
+    <div class="floating-emoji spin" style="bottom: 30%; left: 8%; animation-delay: 0.3s;">💗</div>
+    <div class="floating-emoji" style="top: 20%; left: 20%; animation-delay: 1.2s;">🦋</div>
+    <div class="floating-emoji" style="top: 40%; right: 10%; animation-delay: 0.7s;">🌸</div>
+    <div class="floating-emoji" style="bottom: 20%; right: 16%; animation-delay: 1.5s;">✨</div>
+    <div class="floating-emoji" style="top: 15%; left: 1%;">🍄</div>
+    <div class="floating-emoji fast-float" style="top: 25%; left: 2%;">🃏</div>
+    <div class="floating-emoji" style="top: 50%; right: 15%; animation-delay: 0.5s;">🐈‍⬛</div>
+    <div class="floating-emoji spin" style="top: 30%; right: 5%; animation-delay: 0.5s;">🗝️</div>
+    <div class="floating-emoji" style="bottom: 25%; left: 2%; animation-delay: 1s;">🐱</div>
+    <div class="floating-emoji" style="bottom: 15%; right: 7%;">🌷</div>
+    <div class="floating-emoji fast-float" style="bottom: 4%; left: 20%; animation-delay: 0.5s;">🍵</div>
+    <div class="floating-emoji" style="top: 15%; right: 10%; animation-delay: 1s;">🦋</div>
+    <div class="floating-emoji spin" style="top: 50%; left: 5%; animation-delay: 1.5s;">🎲</div>
+    <div class="floating-emoji fast-float" style="bottom: 6%; left: 5%; animation-delay: 0.5s;">⏰</div>
+    <div class="floating-emoji fast-float" style="bottom: 6%; right: 5%; animation-delay: 0.5s;">🏰</div>
+  </div>
+
+  <script>
+    function setTimer(minutes) {
+      window.location.href = `countdown.html?minutes=${minutes}`;
+    }
+  </script>
+</body>
+</html>
